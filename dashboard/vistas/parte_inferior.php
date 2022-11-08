@@ -6,7 +6,8 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Redes de Datos 2022</span>
+            <span class="pr-3">Copyright &copy; Redes de Datos 2022</span>
+            <img src="img/Logo-UNNE-O.png" alt="Logo UNNE" width="26" height="28">
           </div>
         </div>
       </footer>

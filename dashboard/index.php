@@ -11,7 +11,7 @@
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenidos al Sistema de Gestión - Redes 2022</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p class="lead">El sistema de gestión de redes 2022 es una aplicación web de código abierto que simplifica la administración de redes. Se trata de una aplicación web de código abierto desarrollada en PHP y JavaScript que permite a los administradores de red simplificar la administración de sus redes. El sistema permite la gestión de dispositivos, usuarios, direcciones IP, VLANs y mucho más.</p>
         
       </div>
     </div>
