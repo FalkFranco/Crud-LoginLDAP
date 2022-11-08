@@ -6,11 +6,11 @@ $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
 $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 
 // using ldap bind
-$ldaprdn  = 'cn ='.$usuario.',ou=usuarios,dc=redes,dc=local';
+$ldaprdn  = 'cn ='.$usuario.',ou=usuarios,dc=redes,dc=local'; //modificar en caso de ser necesario
 $ldappass = $password;  // user password
 
 // connect to ldap server
-$ldapconn = ldap_connect("192.168.2.108")
+$ldapconn = ldap_connect("192.168.2.108") //Cambiar por la IP del servidor LDAP
         or die("Could not connect to LDAP server.");
 
 // Set some ldap options for talking to 
@@ -37,6 +37,8 @@ if ($ldapconn) {
 			$rol = $entries[0]['gidnumber'][0];
 
             $_SESSION["s_usuario"] = $name;
+            $_SESSION["s_apellido"] = $lastName;
+            $_SESSION["s_rol"] = $rol;
 			// print_r($name);
 			// print_r($lastName);
 			// print_r($rol);

@@ -5,6 +5,25 @@ if($_SESSION["s_usuario"] === null){
     header("Location: ../index.php");
 }
 
+function Rol($rolid)
+{
+    switch ($rolid) {
+      case 10000:
+          return "Vendedor";
+          break;
+      case 10001:
+        return "Gerente";
+          break;
+      case 10002:
+        return "Administrador";
+          break;
+      case 10003:
+        return "Super Administrador";
+          break;;
+  }             
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +37,7 @@ if($_SESSION["s_usuario"] === null){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>CRUD OPENLDAP</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,9 +48,9 @@ if($_SESSION["s_usuario"] === null){
 
     <!--datables CSS básico-->
     <link rel="stylesheet" type="text/css" href="vendor/datatables/datatables.min.css"/>
-    <!--datables estilo bootstrap 4 CSS-->  
-    <link rel="stylesheet"  type="text/css" href="vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">      
-    
+    <!--datables estilo bootstrap 4 CSS-->
+    <link rel="stylesheet"  type="text/css" href="vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body id="page-top">
@@ -45,12 +64,18 @@ if($_SESSION["s_usuario"] === null){
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-server"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">REDES 2022</div>
       </a>
 
       <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+        <i class="fas fa-fw fa-cogs"></i>
+        <span class="text-uppercase">Sistema <?php echo Rol($_SESSION["s_rol"]) ?></span></a>
+      </li>
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
@@ -65,26 +90,82 @@ if($_SESSION["s_usuario"] === null){
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Menú
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+      <?php if($_SESSION['s_rol'] == 10002){ ?>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Gestion Clientes</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Gestion Clientes:</h6>
+            <a class="collapse-item" href="clientes.php">CRUD Clientes</a>
+            <?php if($_SESSION['s_rol'] != 10000){ ?>
+              <a class="collapse-item" href="cards.php">Listado Clientes Activos</a>
+            <?php } ?>
+          </div>
+        </div>
+      </li>
+      <?php } ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <i class="fas fa-fw fa-file-archive"></i>
+          <span>Reportes</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.php">Buttons</a>
-            <a class="collapse-item" href="cards.php">Cards</a>
+            <h6 class="collapse-header">Reportes:</h6>
+            <a class="collapse-item" href="buttons.php">Ventas</a>
+            <?php if($_SESSION['s_rol'] != 10000){ ?>
+              <a class="collapse-item" href="cards.php">Ingresos</a>
+            <?php } ?>
+            
           </div>
         </div>
       </li>
 
+      <?php if($_SESSION['s_rol'] == 10001){ ?>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-server"></i>
+          <span>Asignar Tareas</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Gestion Tareas:</h6>
+            <a class="collapse-item" href="buttons.php">Vendedores</a>
+            <?php if($_SESSION['s_rol'] != 10000){ ?>
+              <a class="collapse-item" href="cards.php">Administradores</a>
+            <?php } ?>
+          </div>
+        </div>
+      </li>
+      <?php } ?>
+      <?php if($_SESSION['s_rol'] == 10002){ ?>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Backup</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Gestion Backup:</h6>
+            <a class="collapse-item" href="buttons.php">Generar Backup</a>
+            <?php if($_SESSION['s_rol'] != 10000){ ?>
+              <a class="collapse-item" href="cards.php">Restaurar Backup</a>
+            <?php } ?>
+          </div>
+        </div>
+      </li>
+      <?php } ?>
+      
 
-    
+
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -111,7 +192,7 @@ if($_SESSION["s_usuario"] === null){
             <i class="fa fa-bars"></i>
           </button>
 
-         
+
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -246,7 +327,7 @@ if($_SESSION["s_usuario"] === null){
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["s_usuario"];?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["s_usuario"];?> <?php echo $_SESSION["s_apellido"];?></span>
 <!--                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
                 <img class="img-profile rounded-circle" src="img/user.png">
               </a>
@@ -276,3 +357,12 @@ if($_SESSION["s_usuario"] === null){
 
         </nav>
         <!-- End of Topbar -->
+
+
+        
+
+
+
+
+
+
