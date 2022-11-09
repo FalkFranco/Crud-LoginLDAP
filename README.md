@@ -4,11 +4,11 @@ Proyecto de implementacion de autenticacion OpenLdap en php
 
 Este proyecto tiene como finalidad la implementacion del proceso de autenticacion del usuario en php con OpenLdap
 
-## Getting Started
+## Getting Started 🚀
 
 Estas instrucciones permitirán obtener una copia del proyecto en funcionamiento en su máquina local para propósitos de desarrollo y pruebas.
 
-### Prerrequisitos
+### Prerrequisitos ❗
 
 Para poder ejecutar este proyecto es necesario tener instalado en su maquina lo siguiente:
 
@@ -17,7 +17,7 @@ Para poder ejecutar este proyecto es necesario tener instalado en su maquina lo 
 * XAMPP
 
 
-### Instalación
+### Instalación 🔧
 
 Para poder instalar este proyecto es necesario seguir los siguientes pasos
 
