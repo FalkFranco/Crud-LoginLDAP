@@ -25,7 +25,7 @@ Para poder instalar este proyecto es necesario seguir los siguientes pasos
 * Copiar archivo ldap.php en /xampp/htdocs
 * Abrir con editor de texto el archivo php.ini ubicado en la siguiente ruta
 ```
-/xampp/php/php.ini
+.../xampp/php/php.ini
 ```
 * Quitar comentarios linea 923
 ```
