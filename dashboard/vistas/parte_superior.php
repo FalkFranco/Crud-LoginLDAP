@@ -145,6 +145,22 @@ function Rol($rolid)
         </div>
       </li>
       <?php } ?>
+
+      <?php if($_SESSION['s_rol'] == 10001){ ?>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-envelope"></i>
+          <span>Gestion Notificaciones</span>
+        </a>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Gestion Notificaciones:</h6>
+            <a class="collapse-item" href="emitirNotificacion.php">Emitir Notificacion</a>
+          </div>
+        </div>
+      </li>
+      <?php } ?>
+
       <?php if($_SESSION['s_rol'] == 10002){ ?>
         <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">

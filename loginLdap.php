@@ -29,19 +29,39 @@ if ($ldapconn) {
 			$result = ldap_search($ldapconn,"dc=redes,dc=local",$filter) or exit("Unable to search");
 			$entries = ldap_get_entries($ldapconn, $result);
 			
-			// print "<pre>";
-			// print_r ($entries[0]);
-			// print "</pre>";
+			
 			$name = $entries[0]['givenname'][0];
 			$lastName = $entries[0]['sn'][0];
 			$rol = $entries[0]['gidnumber'][0];
+            $uidNumber = $entries[0]['uidnumber'][0];
+
+            $filter2 = ('gidnumber=10000');
+			$result2 = ldap_search($ldapconn,"dc=redes,dc=local",$filter2) or exit("Unable to search");
+			$entries2 = ldap_get_entries($ldapconn, $result2);
+
+            $vendedores = array();
+			$datos = array();
+			$info = array();
+
+            foreach ($entries2 as $val) {
+				if($val['uidnumber'][0] != null ){
+					$datos['uid'] = $val['uidnumber'][0];
+					$info['nombre'] = $val['givenname'][0];
+					$info['apellido'] = $val['sn'][0];
+					$info['rol'] = $val['gidnumber'][0];
+					$datos['datos'] = $info;
+					$vendedores[] = $datos;
+				}
+			}
 
             $_SESSION["s_usuario"] = $name;
             $_SESSION["s_apellido"] = $lastName;
             $_SESSION["s_rol"] = $rol;
-			// print_r($name);
-			// print_r($lastName);
-			// print_r($rol);
+            $_SESSION["s_uidNumber"] = $uidNumber;
+            $_SESSION["s_vendedores"] = $vendedores;
+
+
+			
 
         } else {
             // echo "LDAP bind failed...\n";

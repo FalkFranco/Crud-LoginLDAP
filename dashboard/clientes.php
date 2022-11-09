@@ -20,7 +20,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
 <div class="container">
-<hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider d-none d-md-block">
     <h2>Clientes</h2>
         <?php if($_SESSION['s_rol'] == 10002){ ?>
             <div class="row">
@@ -29,7 +29,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>    
             </div>    
         <?php } ?>
-    </div>    
+</div>    
     <br>  
 <div class="container">
         <div class="row">

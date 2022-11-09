@@ -1,9 +1,9 @@
 $(document).ready(function(){
-    tablaPersonas = $("#tablaPersonas").DataTable({
+    tablaVendedores = $("#tablaVendedores").DataTable({
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
+        "defaultContent": "Vendedor"  
        }],
         
     "language": {
@@ -68,7 +68,7 @@ $(document).on("click", ".btnBorrar", function(){
             dataType: "json",
             data: {opcion:opcion, id:id},
             success: function(){
-                tablaPersonas.row(fila.parents('tr')).remove().draw();
+                tablaVendedores.row(fila.parents('tr')).remove().draw();
             }
         });
     }   
@@ -90,8 +90,8 @@ $("#formPersonas").submit(function(e){
             nombre = data[0].nombre;
             pais = data[0].pais;
             edad = data[0].edad;
-            if(opcion == 1){tablaPersonas.row.add([id,nombre,pais,edad]).draw();}
-            else{tablaPersonas.row(fila).data([id,nombre,pais,edad]).draw();}            
+            if(opcion == 1){tablaVendedores.row.add([id,nombre,pais,edad]).draw();}
+            else{tablaVendedores.row(fila).data([id,nombre,pais,edad]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
