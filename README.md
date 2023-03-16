@@ -4,8 +4,8 @@ Proyecto de implementacion de autenticacion OpenLdap en php
 
 Este proyecto tiene como finalidad la implementacion del proceso de autenticacion del usuario en php con OpenLdap
 ## Monografia 📔
-[Autenticación de cuentas mediante OpenLDAP.pptx](https://github.com/FalkFranco/Crud-LoginLDAP/files/10986407/Autenticacion.de.cuentas.mediante.OpenLDAP.pptx)
 
+[Autenticación de cuentas mediante OpenLDAP.pdf](https://github.com/FalkFranco/Crud-LoginLDAP/files/10986411/Autenticacion.de.cuentas.mediante.OpenLDAP.pdf)
 
 ## Getting Started 🚀
 
